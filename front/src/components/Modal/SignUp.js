@@ -10,7 +10,7 @@ class SignUp extends Component {
                        <div className="modal-header">
                            <h5 className="modal-title" id="exampleModalLongTitle">Sign Up</h5>
                            <Link to={{
-                               pathname: "/",
+                               pathname: "/signup",
                            }}>
                                <button type="button" className="close" data-dismiss="modal" aria-label="Close">
                                    <span aria-hidden="true">&times;</span>

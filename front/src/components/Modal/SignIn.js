@@ -12,7 +12,7 @@ import {
                        <div className="modal-header">
                            <h5 className="modal-title" id="exampleModalLongTitle">Sign In</h5>
                            <Link to={{
-                               pathname: "/",
+                               pathname: "/login",
                            }}>
                                <button type="button" className="close" data-dismiss="modal" aria-label="Close">
                                    <span aria-hidden="true">&times;</span>
