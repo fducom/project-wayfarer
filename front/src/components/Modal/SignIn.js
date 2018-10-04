@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import {
-     Link,   
- } from 'react-router-dom'
+    Link,   
+} from 'react-router-dom'
 
 class SignIn extends Component {
     render(){
@@ -37,4 +37,4 @@ class SignIn extends Component {
 }
 }
 
- export default SignIn
+export default SignIn
