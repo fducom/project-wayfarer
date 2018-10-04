@@ -3,8 +3,6 @@ import Landing from '../Landing/Landing'
 import Header from '../Navigation/Header'
 import Dashboard from '../Dashboard/Dashboard'
 import Modal from '../Modal/Modal'
-import SignIn from '../Modal/SignIn'
-import SignUp from '../Modal/SignUp'
 import { Route, Switch } from 'react-router-dom'
 
 import axios from 'axios'
@@ -49,6 +47,7 @@ class App extends Component {
 
   handleSignUp = (e) => {
     e.preventDefault()
+    console.log("handleSignUp")
     axios.post('http://localhost:3001/users/signup',
       {
         email: this.state.email,
@@ -82,13 +81,13 @@ class App extends Component {
   render() {
     return (
       <div>
-          <Header/>
+          <Header isLoggedIn={this.state.isLoggedIn}/>
           <Switch>
             <Route path='/signup'
               render={(props) => {
                 return (
                   <div>
-                    <Modal component={"SignUp"}/>,
+                    <Modal component={"SignUp"} isLoggedIn={this.state.isLoggedIn} handleInput={this.handleInput} handleSignUp={this.handleSignUp}/>
                     <Landing/>
                   </div>
                 )
@@ -98,7 +97,7 @@ class App extends Component {
               render={(props) => {
                 return (
                   <div>
-                    <Modal component={"SignIn"}/>,
+                    <Modal component={"SignIn"} isLoggedIn={this.state.isLoggedIn} handleInput={this.handleInput} handleLogIn={this.handleLogIn}/>
                     <Landing/>
                   </div>
                 )
@@ -106,13 +105,13 @@ class App extends Component {
             />
             <Route path="/dashboard" render={() => {
               return (
-                <Dashboard isLoggedIn={this.state.isLoggedIn}/>
+                  <Dashboard isLoggedIn={this.state.isLoggedIn}/>
               )
             }} />
             <Route path="/"
               render={() => {
               return (
-                <Landing/>
+                  <Landing/>
               )
             }} />
           </Switch>
