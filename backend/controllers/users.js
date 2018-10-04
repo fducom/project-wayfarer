@@ -14,17 +14,16 @@ const mongoose = require('../models/User')
 const User = mongoose.model('User')
 
 
-
-
 // /api/cities/  => Cities Index
 router.get('/', (req, res) => {
   User.find({})
       .then(user => res.json(user))
-})
+});
 
 // /users/signup
 router.post('/signup', (req, res) => {
   // if they gave us an email and password
+  console.log(req.body.password)
   if (req.body.email && req.body.password) {
     // creating a new user based off the req.body
     let newUser = {
