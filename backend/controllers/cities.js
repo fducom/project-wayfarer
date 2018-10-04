@@ -2,7 +2,7 @@ const express = require('express')
 const router = express.Router()
 
 const mongoose = require('../models/City')
-const Dog = mongoose.model('City')
+const City = mongoose.model('City')
 
 // /api/cities/  => Cities Index
 router.get('/', (req, res) => {
