@@ -100,7 +100,7 @@ class App extends Component {
             />
             <Route path="/dashboard" render={() => {
               return (
-                <Dashboard/>
+                <Dashboard isLoggedIn={this.state.isLoggedIn}/>
               )
             }} />
             <Route path="/"
