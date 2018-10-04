@@ -8,7 +8,7 @@ class Modal extends Component {
     let AuthComp
     if(this.props.component === "SignIn"){
         AuthComp = <SignIn isLoggedIn={this.props.isLoggedIn} handleInput={this.props.handleInput} handleLogIn={this.props.handleLogIn} />
-    } else {
+    } else if (this.props.component === "SignUp"){
         AuthComp = <SignUp isLoggedIn={this.props.isLoggedIn} handleInput={this.props.handleInput} handleSignUp={this.props.handleSignUp}/>
     }
     return (

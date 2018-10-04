@@ -19,17 +19,17 @@ class SignUp extends Component {
                     </div>
                     <div className="modal-body">
                         <div className="input-group mb-3">
-                                <input type="text" className="form-control" placeholder="username" aria-describedby="basic-addon2" onChange={this.props.handleInput}/>
+                                <input type='text' name='email' className="form-control" placeholder="email" aria-describedby="basic-addon2" onChange={this.props.handleInput}/>
                             </div>
                             <div className="input-group mb-3">
-                                <input type="text" className="form-control" placeholder="password" aria-describedby="basic-addon2" onChange={this.props.handleInput}/>
+                                <input type='password' name='password' className="form-control" placeholder="password" aria-describedby="basic-addon2" onChange={this.props.handleInput}/>
                             </div>
                             <div className="input-group mb-3">
-                                <input type="text" className="form-control" placeholder="confirm password" aria-describedby="basic-addon2" onChange={this.props.handleInput}/>
+                                <input type='password' name='password' className="form-control" placeholder="confirm password" aria-describedby="basic-addon2" onChange={this.props.handleInput}/>
                             </div>
                         </div>
                     <div className="modal-footer">
-                        <button type="button" className="btn btn-primary" onClick={this.props.handleSignUp}>Register</button>
+                        <input value='Register' type='submit' onClick={this.props.handleSignUp} />
                     </div>
                 </div>
             </div>

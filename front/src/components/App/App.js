@@ -43,11 +43,12 @@ class App extends Component {
     this.setState({
       [e.target.name]: e.target.value
     })
+    console.log(this.state.email)
   }
 
   handleSignUp = (e) => {
     e.preventDefault()
-    console.log("handleSignUp")
+    console.log(this.state.email)
     axios.post('http://localhost:3001/users/signup',
       {
         email: this.state.email,
