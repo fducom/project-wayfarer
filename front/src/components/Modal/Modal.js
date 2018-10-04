@@ -5,11 +5,17 @@ import SignUp from './SignUp'
 
 class Modal extends Component {
     render() {
-    // Render nothing if the "show" prop is false
-    
+    let AuthComp
+    console.log(this.props)
+    if(this.props.component === "SignIn"){
+        AuthComp = <SignIn/>
+    } else {
+        AuthComp = <SignUp/>
+    }
     return (
-        <SignIn />,
-        <SignUp />
+        <div>
+            {AuthComp}
+        </div>
         );
     }
 }

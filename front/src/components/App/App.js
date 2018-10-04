@@ -87,22 +87,26 @@ class App extends Component {
             <Route path='/signup'
               render={(props) => {
                 return (
-                  <Modal Component={SignUp}/>,
-                  <Landing/>
+                  <div>
+                    <Modal component={"SignUp"}/>,
+                    <Landing/>
+                  </div>
                 )
               }}
             />
             <Route path='/login'
               render={(props) => {
                 return (
-                  <Modal Component={SignIn}/>,
-                  <Landing/>
+                  <div>
+                    <Modal component={"SignIn"}/>,
+                    <Landing/>
+                  </div>
                 )
               }}
             />
             <Route path="/dashboard" render={() => {
               return (
-                <Dashboard/>
+                <Dashboard isLoggedIn={this.state.isLoggedIn}/>
               )
             }} />
             <Route path="/"
