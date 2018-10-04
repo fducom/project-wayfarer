@@ -3,8 +3,6 @@ import Landing from '../Landing/Landing'
 import Header from '../Navigation/Header'
 import Dashboard from '../Dashboard/Dashboard'
 import Modal from '../Modal/Modal'
-import SignIn from '../Modal/SignIn'
-import SignUp from '../Modal/SignUp'
 import { Route, Switch } from 'react-router-dom'
 
 import axios from 'axios'
@@ -88,7 +86,7 @@ class App extends Component {
               render={(props) => {
                 return (
                   <div>
-                    <Modal component={"SignUp"}/>,
+                    <Modal component={"SignUp"}/>
                     <Landing/>
                   </div>
                 )
@@ -98,7 +96,7 @@ class App extends Component {
               render={(props) => {
                 return (
                   <div>
-                    <Modal component={"SignIn"}/>,
+                    <Modal component={"SignIn"}/>
                     <Landing/>
                   </div>
                 )
