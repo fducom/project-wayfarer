@@ -30,7 +30,13 @@ class Header extends Component {
                                 </Link>
                             </li>
                             <li className="nav-item">
-                                <a className="nav-link" id='signup' href="#">Sign up</a>
+                                <Link to={{
+                                    pathname: "/signup",
+                                }}>
+                                    <button type="button" className="nav-link" data-toggle="modal" data-target="#exampleModalCenter">
+                                        Sign Up
+                                    </button>
+                                </Link>
                             </li>
                         </ul>
                     </div>

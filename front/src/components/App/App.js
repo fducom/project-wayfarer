@@ -3,6 +3,8 @@ import Landing from '../Landing/Landing'
 import Header from '../Navigation/Header'
 import Dashboard from '../Dashboard/Dashboard'
 import Modal from '../Modal/Modal'
+import SignIn from '../Modal/SignIn'
+import SignUp from '../Modal/SignUp'
 import { Route, Switch } from 'react-router-dom'
 
 import axios from 'axios'
@@ -85,16 +87,20 @@ class App extends Component {
             <Route path='/signup'
               render={(props) => {
                 return (
-                  <Modal isLoggedIn={this.state.isLoggedIn} handleInput={this.handleInput} handleSignUp={this.handleSignUp} />,
-                  <Landing/>
+                  <div>
+                    <Modal component={"SignUp"}/>,
+                    <Landing/>
+                  </div>
                 )
               }}
             />
             <Route path='/login'
               render={(props) => {
                 return (
-                  <Modal isLoggedIn={this.state.isLoggedIn} handleInput={this.handleInput} handleLogIn={this.handleLogIn}/>,
-                  <Landing/>
+                  <div>
+                    <Modal component={"SignIn"}/>,
+                    <Landing/>
+                  </div>
                 )
               }}
             />
