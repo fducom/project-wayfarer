@@ -30,4 +30,37 @@ h2 {
   color:white;
 }
 
+.dashBoard {
+  display:grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  border:1px solid black;
+}
+
+.city-detail {
+  border:1px solid black;
+  grid-column: 2/span 3;
+  display:grid;
+  grid-template-columns:1fr 1fr 1fr;
+  grid-template-rows:1fr 2fr;
+  background-color:white;
+
+
+}
+
+img {
+  grid-column:2/span 3;
+  grid-row:1;
+  width:100%
+}
+
+.userPost {
+  display:grid;
+  grid-column:1/span 3;
+  grid-row:2
+}
+
+.cityName li{
+  border:1px solid black;
+  list-style: none;
+}
 
