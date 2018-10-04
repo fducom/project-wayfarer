@@ -6,11 +6,10 @@ import SignUp from './SignUp'
 class Modal extends Component {
     render() {
     let AuthComp
-    console.log(this.props)
     if(this.props.component === "SignIn"){
-        AuthComp = <SignIn/>
-    } else {
-        AuthComp = <SignUp/>
+        AuthComp = <SignIn isLoggedIn={this.props.isLoggedIn} handleInput={this.props.handleInput} handleLogIn={this.props.handleLogIn} />
+    } else if (this.props.component === "SignUp"){
+        AuthComp = <SignUp isLoggedIn={this.props.isLoggedIn} handleInput={this.props.handleInput} handleSignUp={this.props.handleSignUp}/>
     }
     return (
         <div>

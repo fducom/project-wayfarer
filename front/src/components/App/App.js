@@ -42,10 +42,12 @@ class App extends Component {
     this.setState({
       [e.target.name]: e.target.value
     })
+    console.log(this.state.email)
   }
 
   handleSignUp = (e) => {
     e.preventDefault()
+    console.log(this.state.email)
     axios.post('http://localhost:3001/users/signup',
       {
         email: this.state.email,
@@ -81,13 +83,13 @@ class App extends Component {
   render() {
     return (
       <div>
-          <Header/>
+          <Header isLoggedIn={this.state.isLoggedIn}/>
           <Switch>
             <Route path='/signup'
               render={(props) => {
                 return (
                   <div>
-                    <Modal component={"SignUp"}/>
+                    <Modal component={"SignUp"} isLoggedIn={this.state.isLoggedIn} handleInput={this.handleInput} handleSignUp={this.handleSignUp}/>
                     <Landing/>
                   </div>
                 )
@@ -97,7 +99,7 @@ class App extends Component {
               render={(props) => {
                 return (
                   <div>
-                    <Modal component={"SignIn"}/>
+                    <Modal component={"SignIn"} isLoggedIn={this.state.isLoggedIn} handleInput={this.handleInput} handleLogIn={this.handleLogIn}/>
                     <Landing/>
                   </div>
                 )
@@ -105,13 +107,13 @@ class App extends Component {
             />
             <Route path="/dashboard" render={() => {
               return (
-                <Dashboard isLoggedIn={this.state.isLoggedIn}/>
+                  <Dashboard isLoggedIn={this.state.isLoggedIn}/>
               )
             }} />
             <Route path="/"
               render={() => {
               return (
-                <Landing/>
+                  <Landing/>
               )
             }} />
           </Switch>
