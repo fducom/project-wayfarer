@@ -1,9 +1,27 @@
 import React, { Component } from 'react'
 import City from './City'
+import axios from "axios"
+
 class CityList extends Component {
+    constructor(){
+        super()
+        this.state = {
+            list: []
+        }
+    }
+
+    componentDidMount () {
+        axios.get('http://localhost:3001/api/cities')
+            .then(response => {
+            console.log(response)
+            this.setState({
+                list: response.data
+            })
+        })
+    }
+
     render(){
-        let cities = [1,2,3,4,5]
-        let cityMapped = cities.map((city, index)=>{
+        let cityMapped = this.state.list.map((city, index)=>{
             return <City key={index} cityInfo={city}/>
         })
         return(
