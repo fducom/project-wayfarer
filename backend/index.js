@@ -11,7 +11,7 @@ app.use(passport.initialize())
 app.use(cors())
 app.use(parser.json())
 
-app.use('/api/dogs', cityController)
+app.use('/api/cities', cityController)
 app.use('/users', userController)
 
 app.listen(3001, () => console.log('Listening on port 3001 :)'))
