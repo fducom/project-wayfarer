@@ -1,4 +1,4 @@
-const mongoose = require('../models/Dog')
+const mongoose = require('../models/City')
 const data = require('./data')
 
 const City = mongoose.model('City')
