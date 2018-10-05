@@ -11,9 +11,6 @@ class City extends Component {
 
     handleClick = () => {
         this.state.choice.push(this.props.cityInfo)
-        // this.setState({
-        //     choice: this.props.cityInfo
-        // })
         this.props.reportMark(this.state.choice)
     }
 

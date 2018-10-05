@@ -10,14 +10,16 @@ class Dashboard extends Component {
     constructor(props){
         super(props)
         this.state = {
-            list: []
+            list: [],
+            choice: []
         }
     }
 
     reportMark = (choice) => {
-        console.log(choice[0])
+        this.setState({
+            choice: choice
+        })
     }
-
 
     componentDidMount () {
         axios.get('http://localhost:3001/api/cities')
@@ -31,7 +33,7 @@ class Dashboard extends Component {
     render() {
         let element
         if(this.props.isLoggedIn){
-            element = <div className='dashBoard'><CityList reportMark={this.reportMark} list={this.state.list}/><CityDetail/></div>
+            element = <div className='dashBoard'><CityList reportMark={this.reportMark} list={this.state.list}/><CityDetail choice={this.state.choice[0]}/></div>
         } else{
             element = <Redirect to="/"/>
         }
