@@ -3,7 +3,7 @@ import Landing from '../Landing/Landing'
 import Header from '../Navigation/Header'
 import Dashboard from '../Dashboard/Dashboard'
 import Modal from '../Modal/Modal'
-import { Route, Switch } from 'react-router-dom'
+import { Route, Switch, Redirect } from 'react-router-dom'
 import axios from 'axios'
 
 class App extends Component {
@@ -81,7 +81,7 @@ class App extends Component {
   render() {
     return (
       <div>
-          <Header isLoggedIn={this.state.isLoggedIn}/>
+          <Header isLoggedIn={this.state.isLoggedIn} handleLogOut={this.handleLogOut} />
           <Switch>
             <Route path='/signup'
               render={(props) => {
@@ -103,9 +103,27 @@ class App extends Component {
                 )
               }}
             />
-            <Route path="/dashboard" render={() => {
+            <Route path='/logout'
+              render={(props) => {
+                return (
+                  <Header isLoggedIn={this.state.isLoggedIn} handleLogOut={this.handleLogOut} />
+                )
+              }}
+            />
+            <Route path="/dashboard/create_post" 
+              render={(props) => {
               return (
+                <div>
+                  <Modal component={"Post"}/>
                   <Dashboard isLoggedIn={this.state.isLoggedIn}/>
+                </div>
+              )
+            }} />
+            <Route path="/dashboard" exact render={() => {
+              return (
+                <div>
+                  <Dashboard isLoggedIn={this.state.isLoggedIn}/>
+                </div>
               )
             }} />
             <Route path="/"
