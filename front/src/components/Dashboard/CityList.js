@@ -6,7 +6,7 @@ class CityList extends Component {
 
     render(){
         let cityMapped = this.props.list.map((city, index)=>{
-            return <City key={index} cityInfo={city} handleClickCity={this.props.handleClickCity}/>
+            return <City reportMark={this.props.reportMark} key={index} cityInfo={city}/>
         })
         return(
             <div className='cityName'>

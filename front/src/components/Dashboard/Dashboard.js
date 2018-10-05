@@ -14,6 +14,11 @@ class Dashboard extends Component {
         }
     }
 
+    reportMark = (choice) => {
+        console.log(choice[0])
+    }
+
+
     componentDidMount () {
         axios.get('http://localhost:3001/api/cities')
             .then(response => {
@@ -23,16 +28,10 @@ class Dashboard extends Component {
         })
     }
 
-    handleClickCity = (event) =>{
-        event.preventDefault()
-        console.log()
-    }
-
-
     render() {
         let element
         if(this.props.isLoggedIn){
-            element = <div className='dashBoard'><CityList list={this.state.list} handleClickCity={this.handleClickCity}/><CityDetail /></div>
+            element = <div className='dashBoard'><CityList reportMark={this.reportMark} list={this.state.list}/><CityDetail/></div>
         } else{
             element = <Redirect to="/"/>
         }

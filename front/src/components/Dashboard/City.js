@@ -1,10 +1,26 @@
 import React, { Component } from 'react'
+import CityButton from './CityButton'
 
 class City extends Component {
+    constructor(props){
+        super(props)
+        this.state ={
+            choice: []
+        }
+    }
+
+    handleClick = () => {
+        this.state.choice.push(this.props.cityInfo)
+        // this.setState({
+        //     choice: this.props.cityInfo
+        // })
+        this.props.reportMark(this.state.choice)
+    }
+
     render(){
         return(
             <div>
-                <button type="button" className="btn btn-outline-secondary btn-lg btn-block">{this.props.cityInfo.cityName}</button>
+                <CityButton handleClick={this.handleClick} cityName={this.props.cityInfo.cityName}/>
             </div>
         );
     }

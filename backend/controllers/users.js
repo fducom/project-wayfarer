@@ -17,8 +17,18 @@ const User = mongoose.model('User')
 // /api/cities/  => Cities Index
 router.get('/', (req, res) => {
   User.find({})
-      .then(user => res.json(user))
+      .then(users => res.json(users))
 });
+
+router.get('/:email', (req, res) => {
+  let email = req.params.email
+  console.log("email: "+email)
+  User.findOne({ email: email })
+    .then(user => res.send(user))
+    .catch(function(err) { 
+      res.json(err)
+    })
+  });
 
 // /users/signup
 router.post('/signup', (req, res) => {
