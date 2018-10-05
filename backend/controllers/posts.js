@@ -10,10 +10,16 @@ router.get('/', (req, res) => {
         .then(posts => res.json(posts))
 })
 // /api/cities/:cityname  => City Index
-router.get('/:post', (req, res) => {
-    Post.find({title: req.params.post})
-        .then(post => res.json(post))
-})
+router.get('/:title', (req, res) => {
+    let title = req.params.title
+    User.findOne({ title: title })
+      .then(user => res.send(user))
+      .catch(function(err) { 
+  
+        res.status.json(404)
+      })
+    });
+    
 
 
 module.exports = router

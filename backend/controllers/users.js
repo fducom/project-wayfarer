@@ -22,26 +22,49 @@ router.get('/', (req, res) => {
 
 router.get('/:email', (req, res) => {
   let email = req.params.email
-  console.log("email: "+email)
   User.findOne({ email: email })
-    .then(user => res.send(user))
+    .then(user =>{
+      if(!user){
+        res.status(500)
+      }
+
+      res.send(user)
+
+    })
     .catch(function(err) { 
-      res.json(err)
+
+      res.status(404)
     })
   });
   
+
+  router.post('/editprofile', (req, res) => {
+    User.findById({_id: req.body.id}, (err, user) => {
+
+      if(err){console.log(err)}
+
+        let email = req.body.email;
+        let password = req.body.password;
+
+        if (!email) { // simplified: '' is a falsey
+            email = user.email
+        }
+        if(!password){
+          password = user.password
+        }
+
+        // no need for else since you are returning early ^
+        user.email = email;
+        user.password = password;
+
+        // don't forget to save!
+        user.save(function (err) {
+            res.staus(500);
+        });
+    });
+});
   
   
-  
-//   .then(user => {
-//     if (user) {
-//       res.json(user)
-//     }else{
-//       console.log("NOPE!")
-//       res.json(500)
-//     }
-//   } ).catch(()=>console.log('first catch'));
-// });
 
 
 // /users/signup
