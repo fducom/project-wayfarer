@@ -59,6 +59,7 @@ class App extends Component {
       })
     })
     .catch(err => console.log(err))
+    return <Redirect to="/"/>
   }
 
   handleLogIn = (e) => {
@@ -119,7 +120,7 @@ class App extends Component {
                 </div>
               )
             }} />
-            <Route path="/dashboard" exact render={() => {
+            <Route path="/dashboard" render={() => {
               return (
                 <div>
                   <Dashboard isLoggedIn={this.state.isLoggedIn}/>

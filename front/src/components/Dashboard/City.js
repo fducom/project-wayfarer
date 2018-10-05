@@ -4,9 +4,7 @@ class City extends Component {
     render(){
         return(
             <div>
-                <li>
-                        {this.props.cityInfo.cityName}
-                </li>
+                <button type="button" className="btn btn-outline-secondary btn-lg btn-block">{this.props.cityInfo.cityName}</button>
             </div>
         );
     }
