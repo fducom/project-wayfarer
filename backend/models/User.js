@@ -1,9 +1,14 @@
 const mongoose = require('../db/connection')
 
 const UserSchema = new mongoose.Schema({
-	email: String,
-	password: String,
-	
+    email: {
+        type: String,
+        required: true,
+        unique: true },
+    password: {
+        type: String, 
+        required: true
+    }
 })
 
 mongoose.model('User', UserSchema)
