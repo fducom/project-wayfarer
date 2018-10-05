@@ -1,7 +1,6 @@
 import React, { Component } from 'react'
-import Modal from '../Modal/Modal'
 import { Link } from 'react-router-dom'
-
+import Post from './Post'
 class CityDetail extends Component {
     render(){
         return(
@@ -15,7 +14,7 @@ class CityDetail extends Component {
                             Create Post
                         </button>
                 </Link>
-                
+                <Post/>
             </div>
         )
     }
