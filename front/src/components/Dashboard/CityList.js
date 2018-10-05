@@ -3,8 +3,8 @@ import City from './City'
 import axios from "axios"
 
 class CityList extends Component {
-    constructor(){
-        super()
+    constructor(props){
+        super(props)
         this.state = {
             list: []
         }
@@ -13,7 +13,6 @@ class CityList extends Component {
     componentDidMount () {
         axios.get('http://localhost:3001/api/cities')
             .then(response => {
-            console.log(response)
             this.setState({
                 list: response.data
             })
