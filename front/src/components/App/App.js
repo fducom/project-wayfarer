@@ -3,7 +3,7 @@ import Landing from '../Landing/Landing'
 import Header from '../Navigation/Header'
 import Dashboard from '../Dashboard/Dashboard'
 import Modal from '../Modal/Modal'
-import { Route, Switch, Redirect } from 'react-router-dom'
+import { Route, Switch } from 'react-router-dom'
 import axios from 'axios'
 
 class App extends Component {
@@ -59,7 +59,6 @@ class App extends Component {
       })
     })
     .catch(err => console.log(err))
-    return <Redirect to="/"/>
   }
 
   handleLogIn = (e) => {
@@ -76,8 +75,6 @@ class App extends Component {
     })
     .catch(err => console.log(err))
   }
-
-
 
   render() {
     return (
@@ -111,15 +108,6 @@ class App extends Component {
                 )
               }}
             />
-            <Route path="/dashboard/create_post" 
-              render={(props) => {
-              return (
-                <div>
-                  <Modal component={"Post"}/>
-                  <Dashboard isLoggedIn={this.state.isLoggedIn}/>
-                </div>
-              )
-            }} />
             <Route path="/dashboard" render={() => {
               return (
                 <div>

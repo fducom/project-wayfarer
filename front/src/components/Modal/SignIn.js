@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import {
-    Link,   
+    Link,
 } from 'react-router-dom'
 
 class SignIn extends Component {
@@ -11,9 +11,7 @@ class SignIn extends Component {
                 <div className="modal-content">
                     <div className="modal-header">
                         <h5 className="modal-title" id="exampleModalLongTitle">Sign In</h5>
-                        <Link to={{
-                            pathname: "/",
-                        }}>
+                        <Link to= "/">
                             <button type="button" className="close" data-dismiss="modal" aria-label="Close">
                                 <span aria-hidden="true">&times;</span>
                             </button>
@@ -28,7 +26,7 @@ class SignIn extends Component {
                         </div>
                     </div>
                     <div className="modal-footer">
-                    <input value='Login' type='submit' onClick={this.props.handleLogIn} />
+                        <input value='Login' type='submit' onClick={this.props.handleLogIn} />
                     </div>
                 </div>
             </div>

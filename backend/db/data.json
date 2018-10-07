@@ -2,51 +2,51 @@
     {
         "cityName": "Bangkok",
         "country": "Thailand",
-        "imageUrl": "String"
+        "imageUrl": "http://static.asiawebdirect.com/m/bangkok/portals/bangkok-com/shared/teasersL/TOP10/top-10-historical-attractions/teaserMultiLarge/imageHilight/things-to-do-bangkok-L.jpg"
     },
     {
         "cityName": "London",
         "country": "United Kingdom",
-        "imageUrl": "String"
+        "imageUrl": "https://images.trvl-media.com/media/content/shared/images/travelguides/London-and-vicinity-178279-desktopRetina.jpg"
     },
     {
         "cityName": "Paris",
         "country": "France",
-        "imageUrl": "String"
+        "imageUrl": "https://cdn.theculturetrip.com/wp-content/uploads/2015/11/eur-france-paris.JPG"
     },
     {
         "cityName": "Dubai",
         "country": "United Arab Emirates",
-        "imageUrl": "String"
+        "imageUrl": "http://forbes.es/app/uploads/2017/05/Dubai-xlarge.jpg"
     },
     {
         "cityName": "Singapore",
         "country": "Singapore",
-        "imageUrl": "String"
+        "imageUrl": "https://fm.cnbc.com/applications/cnbc.com/resources/img/editorial/2018/03/14/105066394-GettyImages-498350103_1.1910x1000.jpg"
     },
     {
         "cityName": "New York City",
         "country": "United States",
-        "imageUrl": "String"
+        "imageUrl": "https://lonelyplanetimages.imgix.net/mastheads/GettyImages-538096543_medium.jpg?sharp=10&vib=20&w=1200"
     },
     {
         "cityName": " Kuala Lumpur",
         "country": "Malaysia",
-        "imageUrl": "String"
+        "imageUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/f/fc/Moonrise_over_kuala_lumpur.jpg/750px-Moonrise_over_kuala_lumpur.jpg"
     },
     {
         "cityName": "Tokyo",
         "country": "Japan",
-        "imageUrl": "String"
+        "imageUrl": "https://static.independent.co.uk/s3fs-public/thumbnails/image/2018/04/10/13/tokyo-main.jpg?w968h681"
     },
     {
         "cityName": "Istanbul",
         "country": "Turkey",
-        "imageUrl": "String"
+        "imageUrl": "https://media-cdn.tripadvisor.com/media/photo-s/02/39/d4/03/istambul.jpg"
     },
     {
         "cityName": "Seoul",
         "country": "South Korea",
-        "imageUrl": "String"
+        "imageUrl": "https://static1.squarespace.com/static/59888e2fe3df285a35db3d4e/t/5b0472ec70a6adb23ea1f40b/1527018241859/seoul.jpg"
     }
 ]

@@ -3,7 +3,7 @@ import CityList from './CityList'
 import CityDetail from './CityDetail'
 import '../../index.css';
 import axios from 'axios'
-import { Redirect } from 'react-router-dom'
+import Landing from '../Landing/Landing'
 
 class Dashboard extends Component {
 
@@ -11,7 +11,8 @@ class Dashboard extends Component {
         super(props)
         this.state = {
             list: [],
-            choice: []
+            choice: [],
+            posts:[]
         }
     }
 
@@ -24,18 +25,31 @@ class Dashboard extends Component {
     componentDidMount () {
         axios.get('http://localhost:3001/api/cities')
             .then(response => {
-            this.setState({
-                list: response.data
+                this.setState({
+                    list: response.data
+                })
             })
-        })
+        axios.get(`http://localhost:3001/api/posts/`)
+            .then(response => {
+                let array = []
+                response.data.forEach(element => {
+                    array.push(element)
+                })
+                this.setState({
+                    posts: array
+                })
+            })
     }
 
     render() {
         let element
         if(this.props.isLoggedIn){
-            element = <div className='dashBoard'><CityList reportMark={this.reportMark} list={this.state.list}/><CityDetail choice={this.state.choice[0]}/></div>
+            element =   <div className='dashBoard'>
+                            <CityList reportMark={this.reportMark} list={this.state.list}/>
+                            <CityDetail choice={this.state.choice} posts={this.state.posts}/>
+                        </div>
         } else{
-            element = <Redirect to="/"/>
+            element = <Landing/>
         }
         return (
             <div>
