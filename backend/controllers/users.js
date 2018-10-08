@@ -27,12 +27,9 @@ router.get('/:email', (req, res) => {
       if(!user){
         res.status(500)
       }
-
       res.send(user)
-
     })
     .catch(function(err) { 
-
       res.status(404)
     })
   });
@@ -122,18 +119,20 @@ router.post('/login', (req, res) => {
       // if we found a user
       if (user) {
         // if user's password equals the req.body password
-        if (user.password === req.body.password) {
-          // then they're who they say they are
-          // lets make a payload of their user id
-          let payload = { id: user.id }
-          // lets make a token out of their user id and our secret
-          let token = jwt.encode(payload, config.jwtSecret)
-          // lets send that new token back to them
-          res.json({ token })
-        } else {
-          // email/password are incorrect
-          res.sendStatus(401)
-        }
+        bcrypt.compare(req.body.password, user.password, (err, match) => {
+          if (match) {
+            // then they're who they say they are
+            // lets make a payload of their user id
+            let payload = { id: user.id }
+            // lets make a token out of their user id and our secret
+            let token = jwt.encode(payload, config.jwtSecret)
+            // lets send that new token back to them
+            res.json({ token })
+          } else {
+            // email/password are incorrect
+            res.sendStatus(401)
+          }
+        })
         // we didn't find that user
       } else {
         res.sendStatus(401)
