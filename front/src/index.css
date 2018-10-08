@@ -1,9 +1,10 @@
 body {
-  background-color:gainsboro
+  background-color:gray;
+  margin: 0 15px;
 }
 
 .main {
-  column-count: 3
+  column-count: 3;
 }
 
 h2 {
@@ -12,7 +13,7 @@ h2 {
 
 .navbar {
   background-color:#777777;
-  border:1px solid #505050
+  /* border:1px solid #505050 */
 }
 
 .navbar-nav {
@@ -31,22 +32,25 @@ h2 {
 .dashBoard {
   display:grid;
   grid-template-columns: 1fr 1fr 1fr;
-  border:1px solid black;
+  /* margin:10px; */
 }
 
 .city-detail {
-  border:1px solid black;
   grid-column: 2/span 3;
   display:grid;
   grid-template-columns:1fr 1fr;
-  grid-template-rows:1fr;
+  grid-template-rows:1fr 1fr 1fr;
   background-color:white;
+  border-radius: 10px;
+  width:100%;
+  padding:50px;
 }
 
 img {
   grid-column:2/span 1;
   grid-row:1;
-  width:100%
+  width:100%;
+  border-radius: 10px;
 }
 
 .userPost {
@@ -56,11 +60,50 @@ img {
 }
 
 .cityName li{
-  border:1px solid black;
   list-style: none;
 }
 
+.cityName {
+  background-color: gainsboro;
+  width:100%;
+  text-align: center;
+  border-radius:10px;
+  margin-right:20px;
+  z-index: 1;
+}
 .thumbnail{
   width: 50px;
   height: 50px;
 }
+
+.cityButton{
+  margin:15px;
+}
+
+.cityButton img {
+  float: left;
+}
+
+.city-detail button {
+  width:50%;
+  height:30px;;
+  border-radius: 15px;
+  
+}
+
+@media only screen and (max-width: 850px) {
+   .dashBoard{
+      display: block;
+      width:100%;
+  }
+  .cityName{
+    width:80%;
+    margin:auto;
+    height:100%;
+    margin-bottom:10px;
+  }
+  .city-detail {
+    width:100%;
+    /* margin:auto; */
+  }
+} 

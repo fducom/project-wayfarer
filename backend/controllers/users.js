@@ -12,6 +12,8 @@ const config = require('../config/config')
 // requiring our user to CRUD users
 const mongoose = require('../models/User')
 const User = mongoose.model('User')
+const mongooseTwo = require('../models/Post')
+const Post = mongooseTwo.model('Post')
 
 function verifyToken(req, res, next) {
   console.log("in verify...");
@@ -36,6 +38,8 @@ function verifyToken(req, res, next) {
 }
 
 router.post('/verify', verifyToken, (req, res) => {
+  console.log("TOKEN: "+req.token)
+  console.log("Secret: "+config.jwtSecret)
   let verified= jwt.decode(req.token,config.jwtSecret)
   console.log("verified: ", verified)
   res.json(verified)
@@ -47,45 +51,54 @@ router.get('/', (req, res) => {
       .then(users => res.json(users))
 });
 
-router.get('/:email', (req, res) => {
-  let email = req.params.email
-  User.findOne({ email: email })
+router.get('/profile/:id', (req, res) => {
+  let returnObj = []
+  let id = req.params.id
+  User.findOne({ _id: id })
     .then(user =>{
       if(!user){
         res.status(500)
+      }else{
+        Post.find({_user: user.id}, (err, userPosts)=>{
+          returnObj.push(user.id)
+          returnObj.push(user.email)
+          returnObj.push(userPosts)
+          res.json(returnObj)
+        })
       }
-      res.send(user)
     })
     .catch(function(err) { 
       res.status(404)
     })
   });
   
-  router.post('/editprofile', (req, res) => {
-    User.findById({_id: req.body.id}, (err, user) => {
+
+  router.post('/editprofile/:id', (req, res) => {
+    User.findById({_id: req.params.id}, (err, user) => {
 
       if(err){console.log(err)}
 
         let email = req.body.email;
         let password = req.body.password;
 
-        if (!email) { // simplified: '' is a falsey
+        if (!email) { 
             email = user.email
         }
         if(!password){
           password = user.password
         }
 
-        // no need for else since you are returning early ^
         user.email = email;
         user.password = password;
 
-        // don't forget to save!
         user.save(function (err) {
             res.staus(500);
         });
     });
 });
+  
+  
+
 
 // /users/signup
 router.post('/signup', (req, res) => {
@@ -115,7 +128,7 @@ router.post('/signup', (req, res) => {
                 // if we successfully created that user
                 if (user) {
                   // create a payload
-                  let payload = { id: newUser.id }
+                  let payload = { id: user.id }
                   // create a jwt token with that payload
                   let token = jwt.encode(payload, config.jwtSecret)
                   // after i've made that token, i send it back as success
