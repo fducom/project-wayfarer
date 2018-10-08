@@ -37,6 +37,7 @@ router.get('/:email', (req, res) => {
     })
   });
   
+
   router.post('/editprofile', (req, res) => {
     User.findById({_id: req.body.id}, (err, user) => {
 
@@ -45,23 +46,24 @@ router.get('/:email', (req, res) => {
         let email = req.body.email;
         let password = req.body.password;
 
-        if (!email) { // simplified: '' is a falsey
+        if (!email) { 
             email = user.email
         }
         if(!password){
           password = user.password
         }
 
-        // no need for else since you are returning early ^
         user.email = email;
         user.password = password;
 
-        // don't forget to save!
         user.save(function (err) {
             res.staus(500);
         });
     });
 });
+  
+  
+
 
 // /users/signup
 router.post('/signup', (req, res) => {

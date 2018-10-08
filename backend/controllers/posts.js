@@ -18,8 +18,19 @@ router.get('/:title', (req, res) => {
   
         res.status.json(404)
       })
-    });
+});
     
+router.post('/createPost', (req, res)=>{
+    let email = req.body.email
+    User.findOne({ email: email })
+    .then(user =>{
+      if(!user){res.status(500)}
+      res.send(user)
+    })
+    .catch(function(err) { 
+      res.status(404)
+    })
+});
 
 
 module.exports = router
