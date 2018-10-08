@@ -4,7 +4,7 @@ class CityButton extends Component {
 
     render(){
         return(
-            <div>
+            <div className='cityButton'>
                 <button type="button" onClick={this.props.handleClick} className="btn btn-outline-secondary btn-lg btn-block">
                     <img className="thumbnail" src={this.props.imageUrl} alt=""/>  {this.props.cityName}
                 </button>
