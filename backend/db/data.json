@@ -1,26 +1,52 @@
 [
     {
-        "name": "Leonard",
-        "age": "10",
-        "frequency": "1x/day",
-        "imageUrl": "https://images.unsplash.com/photo-1493916665398-143bdeabe500?ixlib=rb-0.3.5&ixid=eyJhcHBfaWQiOjEyMDd9&s=a84d2018ccc77cde60160f8b467b3c80&auto=format&fit=crop&w=1334&q=80"
+        "cityName": "Bangkok",
+        "country": "Thailand",
+        "imageUrl": "http://static.asiawebdirect.com/m/bangkok/portals/bangkok-com/shared/teasersL/TOP10/top-10-historical-attractions/teaserMultiLarge/imageHilight/things-to-do-bangkok-L.jpg"
     },
     {
-        "name": "Peggy",
-        "age": "4",
-        "frequency": "1x/day",
-        "imageUrl": "https://images.unsplash.com/photo-1503256207526-0d5d80fa2f47?ixlib=rb-0.3.5&s=011eedd288b1e5b1b5e02c3619ad3b1f&auto=format&fit=crop&w=666&q=80"
+        "cityName": "London",
+        "country": "United Kingdom",
+        "imageUrl": "https://images.trvl-media.com/media/content/shared/images/travelguides/London-and-vicinity-178279-desktopRetina.jpg"
     },
     {
-        "name": "Voldemort",
-        "age": "0.25",
-        "frequency": "3x/day",
-        "imageUrl": "https://images.unsplash.com/photo-1447684808650-354ae64db5b8?ixlib=rb-0.3.5&s=7c54f21912fad3f0b3fee333a4a3a240&auto=format&fit=crop&w=1347&q=80"
+        "cityName": "Paris",
+        "country": "France",
+        "imageUrl": "https://cdn.theculturetrip.com/wp-content/uploads/2015/11/eur-france-paris.JPG"
     },
     {
-        "name": "Petunia",
-        "age": "2",
-        "frequency": "2x/day",
-        "imageUrl": "https://images.unsplash.com/photo-1505044197374-4d4ae3f9d566?ixlib=rb-0.3.5&ixid=eyJhcHBfaWQiOjEyMDd9&s=af3dab3922f397a5fde45b3145a0cbdb&auto=format&fit=crop&w=668&q=80"
+        "cityName": "Dubai",
+        "country": "United Arab Emirates",
+        "imageUrl": "http://forbes.es/app/uploads/2017/05/Dubai-xlarge.jpg"
+    },
+    {
+        "cityName": "Singapore",
+        "country": "Singapore",
+        "imageUrl": "https://fm.cnbc.com/applications/cnbc.com/resources/img/editorial/2018/03/14/105066394-GettyImages-498350103_1.1910x1000.jpg"
+    },
+    {
+        "cityName": "New York City",
+        "country": "United States",
+        "imageUrl": "https://lonelyplanetimages.imgix.net/mastheads/GettyImages-538096543_medium.jpg?sharp=10&vib=20&w=1200"
+    },
+    {
+        "cityName": " Kuala Lumpur",
+        "country": "Malaysia",
+        "imageUrl": "https://upload.wikimedia.org/wikipedia/commons/thumb/f/fc/Moonrise_over_kuala_lumpur.jpg/750px-Moonrise_over_kuala_lumpur.jpg"
+    },
+    {
+        "cityName": "Tokyo",
+        "country": "Japan",
+        "imageUrl": "https://static.independent.co.uk/s3fs-public/thumbnails/image/2018/04/10/13/tokyo-main.jpg?w968h681"
+    },
+    {
+        "cityName": "Istanbul",
+        "country": "Turkey",
+        "imageUrl": "https://media-cdn.tripadvisor.com/media/photo-s/02/39/d4/03/istambul.jpg"
+    },
+    {
+        "cityName": "Seoul",
+        "country": "South Korea",
+        "imageUrl": "https://static1.squarespace.com/static/59888e2fe3df285a35db3d4e/t/5b0472ec70a6adb23ea1f40b/1527018241859/seoul.jpg"
     }
 ]

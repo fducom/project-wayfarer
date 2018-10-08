@@ -1,11 +1,11 @@
-const mongoose = require('../models/City')
-const data = require('./data')
+const mongoose = require('../models/Post')
+const data_posts = require('./data_posts')
 
-const City = mongoose.model('City')
+const Post = mongoose.model('Post')
 
-City.remove({})
+Post.remove({})
     .then(_ => {
-        City.collection.insert(data)
+        Post.collection.insert(data_posts)
             .then(seededEntries => {
                 console.log(seededEntries)
                 process.exit()

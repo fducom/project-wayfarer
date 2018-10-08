@@ -1,14 +1,18 @@
 import React,{ Component } from 'react'
 
 class Post extends Component {
-     render(){
-          return(
-               <div className='userPost'>
-                    <h1>Posts</h1>
-               </div>
-
-          );
-     }
+    render(){
+        let Posts = this.props.posts.map((post, index)=>{
+            return (<div key={index}>
+                        <div>{post.description} - {post._user.email}</div>
+                    </div>)
+        })
+        return(
+            <div>
+                {Posts}
+            </div>
+        );
+    }
 }
 
 

@@ -1,20 +1,21 @@
 import React, { Component } from 'react'
 import City from './City'
+
 class CityList extends Component {
-     render(){
-          let cities = ['New York','Tokyo','San Francisco','Hong Kong', 'Dubai']
-          let cityMapped = cities.map((city, index)=>{
-              return <City key={index} cityInfo={city}/>
-          })
-          return(
-               <div className='cityName'>
-                    <h1>Cities</h1>
-                    <ul>
-                         {cityMapped}
-                    </ul>
-               </div>
-          );
-     }
+
+    render(){
+        let cityMapped = this.props.list.map((city, index)=>{
+            return (<div key={index}>
+                        <City imageUrl={city.imageUrl} reportMark={this.props.reportMark} cityInfo={city}/>
+                    </div>)
+        })
+        return(
+            <div className='cityName'>
+                <h1>Cities</h1>
+                {cityMapped}
+            </div>
+        );
+    }
 }
 
 export default CityList

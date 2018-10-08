@@ -2,41 +2,27 @@ import React, { Component } from 'react';
 import {
     Link,
 } from 'react-router-dom'
+import LoggedIn from './LoggedIn'
+import LoggedOut from './LoggedOut'
+
 class Header extends Component {
 
     render() {
+        let navOptions = []
+        if(this.props.isLoggedIn){
+            navOptions.push(<LoggedOut handleLogOut={this.props.handleLogOut}/>)
+        } else {
+            navOptions.push(<LoggedIn />)
+        }
         return (
             <header>
-                <nav className="navbar navbar-expand-lg navbar-light">
-                    <Link to={{
-                                pathname: "/",
-                            }}>
-                    <a className="navbar-brand" href="#">X Wayfarer</a>
-                    </Link>
+                <nav className="navbar navbar-expand-sm navbar-light">
+                    <Link to="/" className="navbar-brand" href="#">X Wayfarer</Link>
                     <button className="navbar-toggler " type="button" data-toggle="collapse" data-target="#navbarText" aria-controls="navbarText" aria-expanded="false" aria-label="Toggle navigation">
                         <span className="navbar-toggler-icon"></span>
                     </button>
                     <div className="collapse navbar-collapse mr-right" id="navbarText">
-                        <ul className="navbar-nav">
-                            <li className="nav-item mr-right ">
-                                <Link to={{
-                                    pathname: "/login",
-                                }}>
-                                    <button type="button" className="nav-link" data-toggle="modal" data-target="#exampleModalCenter">
-                                        Sign in
-                                    </button>
-                                </Link>
-                            </li>
-                            <li className="nav-item">
-                                <Link to={{
-                                    pathname: "/signup",
-                                }}>
-                                    <button type="button" className="nav-link" data-toggle="modal" data-target="#exampleModalCenter">
-                                        Sign Up
-                                    </button>
-                                </Link>
-                            </li>
-                        </ul>
+                        {navOptions}
                     </div>
                 </nav>
             </header>

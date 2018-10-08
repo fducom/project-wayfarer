@@ -2,18 +2,21 @@ import React, { Component } from 'react';
 
 import SignIn from './SignIn'
 import SignUp from './SignUp'
+import CreatePost from './CreatePost'
 
 class Modal extends Component {
     render() {
-    let AuthComp
+    let ModalContent
     if(this.props.component === "SignIn"){
-        AuthComp = <SignIn isLoggedIn={this.props.isLoggedIn} handleInput={this.props.handleInput} handleLogIn={this.props.handleLogIn} />
+        ModalContent = <SignIn isLoggedIn={this.props.isLoggedIn} handleInput={this.props.handleInput} handleLogIn={this.props.handleLogIn} />
     } else if (this.props.component === "SignUp"){
-        AuthComp = <SignUp isLoggedIn={this.props.isLoggedIn} handleInput={this.props.handleInput} handleSignUp={this.props.handleSignUp}/>
+        ModalContent = <SignUp isLoggedIn={this.props.isLoggedIn} handleInput={this.props.handleInput} handleSignUp={this.props.handleSignUp}/>
+    } else if (this.props.component === "Post"){
+        ModalContent = <CreatePost isLoggedIn={this.props.isLoggedIn} handleInput={this.props.handleInput} />
     }
     return (
         <div>
-            {AuthComp}
+            {ModalContent}
         </div>
         );
     }
