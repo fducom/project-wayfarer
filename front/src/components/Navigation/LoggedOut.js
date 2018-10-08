@@ -8,12 +8,17 @@ class LoggedOut extends Component {
     return (
         <div>
             <ul className="navbar-nav">
-            <li className="nav-item mr-right ">
+                <li className="nav-item mr-left ">
                     <Link to="/dashboard" className="nav-link" data-toggle="modal" data-target="#exampleModalCenter">
                         Dashboard
                     </Link>
                 </li>
-                <li className="nav-item mr-right ">
+                <li className="nav-item mr-left ">
+                    <Link to="/dashboard/profile" className="nav-link" data-toggle="modal" data-target="#exampleModalCenter">
+                        Profile
+                    </Link>
+                </li>
+                <li className="nav-item mr-left ">
                     <Link to="/"className="nav-link" data-toggle="modal" data-target="#exampleModalCenter" onClick={this.props.handleLogOut}>
                         Log out
                     </Link>

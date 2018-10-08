@@ -12,9 +12,8 @@ class Header extends Component {
         if(this.props.isLoggedIn){
             navOptions.push(<LoggedOut handleLogOut={this.props.handleLogOut}/>)
         } else {
-            navOptions.push(<LoggedIn/>)
+            navOptions.push(<LoggedIn />)
         }
-
         return (
             <header>
                 <nav className="navbar navbar-expand-sm navbar-light">

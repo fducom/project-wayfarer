@@ -1,12 +1,13 @@
 import React, { Component } from 'react'
 import City from './City'
-import axios from "axios"
 
 class CityList extends Component {
 
     render(){
         let cityMapped = this.props.list.map((city, index)=>{
-            return <City reportMark={this.props.reportMark} key={index} cityInfo={city}/>
+            return (<div key={index}>
+                        <City imageUrl={city.imageUrl} reportMark={this.props.reportMark} cityInfo={city}/>
+                    </div>)
         })
         return(
             <div className='cityName'>

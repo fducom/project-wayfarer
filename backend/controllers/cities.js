@@ -15,5 +15,4 @@ router.get('/:cityname', (req, res) => {
         .then(city => res.json(city))
 })
 
-
 module.exports = router
