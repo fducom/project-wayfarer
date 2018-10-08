@@ -13,7 +13,7 @@ class App extends Component {
     this.state = {
       email: '',
       password: '',
-      isLoggedIn: false
+      isLoggedIn: false,
     }
   }
 
@@ -71,7 +71,7 @@ class App extends Component {
     .then( response => {
       localStorage.token = response.data.token
       this.setState({
-        isLoggedIn: true
+        isLoggedIn: true,
       })
     return window.location = "/dashboard"
     })
@@ -106,7 +106,7 @@ class App extends Component {
             <Route path='/logout'
               render={(props) => {
                 return (
-                  <Header isLoggedIn={this.state.isLoggedIn} handleLogOut={this.handleLogOut}/>
+                  <Header isLoggedIn={this.state.isLoggedIn} handleLogOut={this.handleLogOut} />
                 )
               }}
             />

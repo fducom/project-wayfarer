@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 
 class CreatePost extends Component {
     render() {
+        console.log(this.props.choice._id)
     return (
         <div>
             <div className="modal fade" id="exampleModalCenter" tabIndex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
@@ -14,6 +15,7 @@ class CreatePost extends Component {
                         </button>
                     </div>
                     <div className="modal-body">
+                        <input type="hidden" name="city" value={this.props.choice._id}/>
                         <div className="input-group mb-3">
                             <input type='text' name='title' className="form-control" placeholder="Title" aria-describedby="basic-addon2" onChange={this.props.handleInput}/>
                         </div>

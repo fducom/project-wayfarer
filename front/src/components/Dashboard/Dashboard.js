@@ -44,7 +44,6 @@ class Dashboard extends Component {
     }
 
     render() {
-        console.log(this.props.email)
         let elem
         if(this.props.type === "profile"){
             elem = <Profile />
