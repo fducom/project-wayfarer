@@ -12,6 +12,8 @@ const config = require('../config/config')
 // requiring our user to CRUD users
 const mongoose = require('../models/User')
 const User = mongoose.model('User')
+const mongooseTwo = require('../models/Post')
+const Post = mongooseTwo.model('Post')
 
 function verifyToken(req, res, next) {
   console.log("in verify...");
@@ -48,13 +50,19 @@ router.get('/', (req, res) => {
 });
 
 router.get('/profile/:id', (req, res) => {
+  let returnObj = []
   let id = req.params.id
   User.findOne({ _id: id })
     .then(user =>{
       if(!user){
         res.status(500)
+      }else{
+        Post.find({_user: user.id}, (err, userPosts)=>{
+          returnObj.push(user)
+          returnObj.push(userPosts)
+          res.json(returnObj)
+        })
       }
-      res.send(user)
     })
     .catch(function(err) { 
       res.status(404)
