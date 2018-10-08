@@ -2,7 +2,6 @@ import React, { Component } from 'react';
 
 class CreatePost extends Component {
     render() {
-        console.log(this.props.choice._id)
     return (
         <div>
             <div className="modal fade" id="exampleModalCenter" tabIndex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
