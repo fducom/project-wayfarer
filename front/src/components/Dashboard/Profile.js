@@ -1,6 +1,21 @@
 import React, { Component } from 'react'
 
 class Profile extends Component {
+    constructor(){
+        super()
+        this.state={
+            comments: []
+        }
+    }
+
+    // componentDidMount () {
+    //     axios.get('http://localhost:3001/api/posts//users/:id')
+    //     .then(response => {
+    //         this.setState({
+    //             comments: response.data
+    //         })
+    //     })
+    // }
 
     render(){
         return(

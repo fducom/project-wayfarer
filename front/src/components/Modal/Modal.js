@@ -12,7 +12,7 @@ class Modal extends Component {
     } else if (this.props.component === "SignUp"){
         ModalContent = <SignUp isLoggedIn={this.props.isLoggedIn} handleInput={this.props.handleInput} handleSignUp={this.props.handleSignUp}/>
     } else if (this.props.component === "Post"){
-        ModalContent = <CreatePost isLoggedIn={this.props.isLoggedIn} handleInput={this.props.handleInput} />
+        ModalContent = <CreatePost isLoggedIn={this.props.isLoggedIn} handleInput={this.props.handleInput} choice={this.props.choice}/>
     }
     return (
         <div>
