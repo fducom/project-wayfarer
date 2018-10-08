@@ -24,8 +24,11 @@ class CityDetail extends Component {
         let imageUrl
         let array = []
         if(this.props.posts && this.props.choice){
+             console.log(this.props.choice)
+             
             this.props.posts.forEach(element => {
-                if(element._city.cityName === this.props.choice.cityName){
+                 console.log(element)
+                if(element._city === this.props.choice.cityName){
                     array.push(element)
                 }
             });
