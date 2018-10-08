@@ -8,8 +8,8 @@ const Post = mongoose.model('Post')
 // /api/posts/  => Posts Index
 router.get('/', (req, res) => {
     Post.find({})
-      .populate("_city")
       .populate("_user")
+      .populate("_city")
         .then(posts => res.json(posts))
 })
 

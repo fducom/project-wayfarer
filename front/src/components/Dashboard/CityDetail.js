@@ -1,13 +1,13 @@
 import React, { Component } from 'react'
 import Post from './Post'
 import Modal from '../Modal/Modal'
-
+import axios from 'axios'
 class CityDetail extends Component {
     constructor(props) {
         super(props);
         this.state = {
             showComponent: false,
-            posts: []
+            posts: [],
         };
         this._onButtonClick = this._onButtonClick.bind(this);
     }
@@ -24,11 +24,11 @@ class CityDetail extends Component {
         let imageUrl
         let array = []
         if(this.props.posts && this.props.choice){
-            this.props.posts.forEach(element => {
-                if(element._city.cityName === this.props.choice.cityName){
-                    array.push(element)
-                }
-            });
+            // this.props.posts.forEach(element => {
+            //     if(element._city.cityName === this.props.choice.cityName){
+            //         array.push(element)
+            //     }
+            // });
             cityName = this.props.choice.cityName
             country = this.props.choice.country
             imageUrl = this.props.choice.imageUrl
@@ -44,10 +44,10 @@ class CityDetail extends Component {
                     <p>{country}</p>
                 </div>
                 <img src={imageUrl} alt=""/>
-                <button data-toggle="modal" data-target="#exampleModalCenter" onClick={this._onButtonClick}>
+                <button data-toggle="modal" data-target="#exampleModalCenter" onClick={this._onButtonClick} >
                     Create Post
                 </button>
-                {this.state.showComponent ? < Modal component={"Post"} choice={this.props.choice}/> : null}
+                {this.state.showComponent ? < Modal component={"Post"} choice={this.props.choice} handleInput={this.props.handleInput}/> : null}
                 <Post posts={array} />
             </div>
         )
