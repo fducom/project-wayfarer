@@ -20,9 +20,9 @@ router.get('/', (req, res) => {
       .then(users => res.json(users))
 });
 
-router.get('/:email', (req, res) => {
-  let email = req.params.email
-  User.findOne({ email: email })
+router.get('/profile/:id', (req, res) => {
+  let id = req.params.id
+  User.findOne({ _id: id })
     .then(user =>{
       if(!user){
         res.status(500)
@@ -35,8 +35,8 @@ router.get('/:email', (req, res) => {
   });
   
 
-  router.post('/editprofile', (req, res) => {
-    User.findById({_id: req.body.id}, (err, user) => {
+  router.post('/editprofile/:id', (req, res) => {
+    User.findById({_id: req.params.id}, (err, user) => {
 
       if(err){console.log(err)}
 
