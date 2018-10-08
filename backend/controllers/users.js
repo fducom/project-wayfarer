@@ -13,8 +13,35 @@ const config = require('../config/config')
 const mongoose = require('../models/User')
 const User = mongoose.model('User')
 
+function verifyToken(req, res, next) {
+  console.log("in verify...");
+  // Get auth header value
+  // when we send our token, we want to send it in our header
+  const bearerHeader = req.headers['authorization'];
+  console.log(bearerHeader)
+  console.log("Hi")
+  // Check if bearer is undefined
+  if(typeof bearerHeader !== 'undefined'){
+      const bearer = bearerHeader.split(' ');
+      // Get token from array
+      const bearerToken = bearer[1];
+      // Set the token
+      req.token = bearerToken;
+      // Next middleware
+      next();
+  } else {
+      // Forbidden
+      res.sendStatus(403);
+  }
+}
 
-// /api/cities/  => Cities Index
+router.post('/verify', verifyToken, (req, res) => {
+  let verified= jwt.decode(req.token,config.jwtSecret)
+  console.log("verified: ", verified)
+  res.json(verified)
+}) 
+
+// /api/users/  => Cities Index
 router.get('/', (req, res) => {
   User.find({})
       .then(users => res.json(users))
