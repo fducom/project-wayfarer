@@ -2,13 +2,16 @@ import React, { Component } from 'react'
 import Post from './Post'
 import Modal from '../Modal/Modal'
 import axios from 'axios'
+<<<<<<< HEAD
 
+=======
+>>>>>>> d8738782a46bfc301dc668796bb127d7162cf1f3
 class CityDetail extends Component {
     constructor(props) {
         super(props);
         this.state = {
             showComponent: false,
-            posts: []
+            posts: [],
         };
         this._onButtonClick = this._onButtonClick.bind(this);
     }
@@ -60,10 +63,15 @@ class CityDetail extends Component {
                 </div>
                 <Post posts={array} />
                 <img src={imageUrl} alt=""/>
-                <button data-toggle="modal" data-target="#exampleModalCenter" onClick={this._onButtonClick}>
+                <button data-toggle="modal" data-target="#exampleModalCenter" onClick={this._onButtonClick} >
                     Create Post
                 </button>
+<<<<<<< HEAD
                 {this.state.showComponent ? < Modal component={"Post"} choice={this.props.choice}/> : null}
+=======
+                {this.state.showComponent ? < Modal component={"Post"} choice={this.props.choice} handleInput={this.props.handleInput}/> : null}
+                <Post posts={array} />
+>>>>>>> d8738782a46bfc301dc668796bb127d7162cf1f3
             </div>
         )
     }

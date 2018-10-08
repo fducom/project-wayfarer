@@ -11,10 +11,9 @@ class Dashboard extends Component {
     constructor(props){
         super(props)
         this.state = {
-            userInfo: [],
             list: [],
             choice: [],
-            posts:[]
+            posts:[],
         }
     }
 
@@ -48,7 +47,7 @@ class Dashboard extends Component {
         if(this.props.type === "profile"){
             elem = <Profile />
         } else {
-            elem = <CityDetail choice={this.state.choice} posts={this.state.posts}/>
+            elem = <CityDetail choice={this.state.choice} posts={this.state.posts} handleInput={this.props.handleInput}/>
         }
         let element
         if(this.props.isLoggedIn){

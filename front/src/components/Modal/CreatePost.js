@@ -1,7 +1,49 @@
 import React, { Component } from 'react';
-
+import axios from 'axios'
 class CreatePost extends Component {
+    constructor(){
+        super()
+        this.state ={
+            userId: "",
+            title:"",
+            description:"",
+        }
+    }
+
+    componentDidMount (){
+        axios.defaults.headers.common['Authorization'] = 'Bearer ' + localStorage.getItem('token');
+        axios.post('http://localhost:3001/users/verify',{headers: axios.defaults.headers.common['authorization']})
+        .then(response => {
+            this.setState({
+                userId: response.data.id
+            })
+        })
+    }
+
+    handleInput = (e) => {
+        this.setState({
+            [e.target.name]: e.target.value
+        })
+    }
+
+    handleCreate = () => {
+        axios.post('http://localhost:3001/api/posts/new',
+        {
+            title: this.state.title,
+            description: this.state.description,
+            _user: this.state.userId,
+            _city: this.props.choice._id
+        })
+        .then(response => {
+            console.log(response)
+        })
+    }
+
     render() {
+        console.log(this.state.title)
+        console.log(this.state.description)
+        console.log(this.state.userId)
+        console.log(this.props.choice._id)
     return (
         <div>
             <div className="modal fade" id="exampleModalCenter" tabIndex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
@@ -14,22 +56,24 @@ class CreatePost extends Component {
                         </button>
                     </div>
                     <div className="modal-body">
-                        <input type="hidden" name="city" value={this.props.choice._id}/>
+                        <input type="hidden" name="_user" value={this.state.userId}/>
+                        <input type="hidden" name="_city" value={this.props.choice._id}/>
                         <div className="input-group mb-3">
-                            <input type='text' name='title' className="form-control" placeholder="Title" aria-describedby="basic-addon2" onChange={this.props.handleInput}/>
+                            <input type='text' name='title' className="form-control" placeholder="Title" aria-describedby="basic-addon2" onChange={this.handleInput}/>
                         </div>
                         <div className="input-group mb-3">
-                            <textarea name="description" className="form-control" rows="5" id="comment"></textarea>
+                            <textarea name="description" className="form-control" rows="5" id="comment" onChange={this.handleInput}></textarea>
                         </div>
                     </div>
                     <div className="modal-footer">
-                        <input value='Create Post' type='submit'/>
+                        <input value='Create Post' type='submit' onClick={this.handleCreate}/>
                     </div>
                 </div>
             </div>
         </div>
         </div>
         );
+    
     }
 }
 

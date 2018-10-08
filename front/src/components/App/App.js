@@ -14,6 +14,7 @@ class App extends Component {
       email: '',
       password: '',
       isLoggedIn: false,
+      userId: ''
     }
   }
 
@@ -122,7 +123,7 @@ class App extends Component {
             render={() => {
               return (
                 <div>
-                  <Dashboard isLoggedIn={this.state.isLoggedIn} type={"dashboard"} />
+                  <Dashboard isLoggedIn={this.state.isLoggedIn} type={"dashboard"} handleInput={this.handleInput}/>
                 </div>
               )
             }} />
