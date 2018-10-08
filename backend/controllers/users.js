@@ -38,6 +38,8 @@ function verifyToken(req, res, next) {
 }
 
 router.post('/verify', verifyToken, (req, res) => {
+  console.log("TOKEN: "+req.token)
+  console.log("Secret: "+config.jwtSecret)
   let verified= jwt.decode(req.token,config.jwtSecret)
   console.log("verified: ", verified)
   res.json(verified)
@@ -58,7 +60,8 @@ router.get('/profile/:id', (req, res) => {
         res.status(500)
       }else{
         Post.find({_user: user.id}, (err, userPosts)=>{
-          returnObj.push(user)
+          returnObj.push(user.id)
+          returnObj.push(user.email)
           returnObj.push(userPosts)
           res.json(returnObj)
         })
@@ -125,7 +128,7 @@ router.post('/signup', (req, res) => {
                 // if we successfully created that user
                 if (user) {
                   // create a payload
-                  let payload = { id: newUser.id }
+                  let payload = { id: user.id }
                   // create a jwt token with that payload
                   let token = jwt.encode(payload, config.jwtSecret)
                   // after i've made that token, i send it back as success
