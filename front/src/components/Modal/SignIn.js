@@ -26,7 +26,7 @@ class SignIn extends Component {
                         </div>
                     </div>
                     <div className="modal-footer">
-                        <input value='Login' type='submit' onClick={this.props.handleLogIn} />
+                        <input value='Login' type='submit' onClick={this.props.handleLogIn} data-dismiss="modal"/>
                     </div>
                 </div>
             </div>

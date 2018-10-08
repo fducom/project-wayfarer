@@ -5,7 +5,6 @@ class CityList extends Component {
 
     render(){
         let cityMapped = this.props.list.map((city, index)=>{
-            console.log(city)
             return (<div key={index}>
                         <City imageUrl={city.imageUrl} reportMark={this.props.reportMark} cityInfo={city}/>
                     </div>)

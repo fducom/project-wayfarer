@@ -7,6 +7,7 @@ class CityDetail extends Component {
         super(props);
         this.state = {
             showComponent: false,
+            posts: []
         };
         this._onButtonClick = this._onButtonClick.bind(this);
     }
@@ -46,9 +47,7 @@ class CityDetail extends Component {
                 <button data-toggle="modal" data-target="#exampleModalCenter" onClick={this._onButtonClick}>
                     Create Post
                 </button>
-                {this.state.showComponent ?
-                    < Modal component={"Post"}/> : null
-                }
+                {this.state.showComponent ? < Modal component={"Post"}/> : null}
                 <Post posts={array}/>
             </div>
         )

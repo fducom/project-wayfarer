@@ -4,12 +4,14 @@ import CityDetail from './CityDetail'
 import '../../index.css';
 import axios from 'axios'
 import Landing from '../Landing/Landing'
+import Profile from './Profile'
 
 class Dashboard extends Component {
 
     constructor(props){
         super(props)
         this.state = {
+            userInfo: [],
             list: [],
             choice: [],
             posts:[]
@@ -42,11 +44,18 @@ class Dashboard extends Component {
     }
 
     render() {
+        console.log(this.props.email)
+        let elem
+        if(this.props.type === "profile"){
+            elem = <Profile />
+        } else {
+            elem = <CityDetail choice={this.state.choice} posts={this.state.posts}/>
+        }
         let element
         if(this.props.isLoggedIn){
             element =   <div className='dashBoard'>
                             <CityList reportMark={this.reportMark} list={this.state.list}/>
-                            <CityDetail choice={this.state.choice} posts={this.state.posts}/>
+                            {elem}
                         </div>
         } else{
             element = <Landing/>

@@ -3,7 +3,7 @@ import Landing from '../Landing/Landing'
 import Header from '../Navigation/Header'
 import Dashboard from '../Dashboard/Dashboard'
 import Modal from '../Modal/Modal'
-import { Route, Switch } from 'react-router-dom'
+import { Route, Switch} from 'react-router-dom'
 import axios from 'axios'
 
 class App extends Component {
@@ -57,6 +57,7 @@ class App extends Component {
       this.setState({
         isLoggedIn: true
       })
+      return window.location = "/dashboard"
     })
     .catch(err => console.log(err))
   }
@@ -72,6 +73,7 @@ class App extends Component {
       this.setState({
         isLoggedIn: true
       })
+    return window.location = "/dashboard"
     })
     .catch(err => console.log(err))
   }
@@ -82,7 +84,7 @@ class App extends Component {
           <Header isLoggedIn={this.state.isLoggedIn} handleLogOut={this.handleLogOut} />
           <Switch>
             <Route path='/signup'
-              render={(props) => {
+              render={() => {
                 return (
                   <div>
                     <Modal component={"SignUp"} isLoggedIn={this.state.isLoggedIn} handleInput={this.handleInput} handleSignUp={this.handleSignUp}/>
@@ -104,14 +106,23 @@ class App extends Component {
             <Route path='/logout'
               render={(props) => {
                 return (
-                  <Header isLoggedIn={this.state.isLoggedIn} handleLogOut={this.handleLogOut} />
+                  <Header isLoggedIn={this.state.isLoggedIn} handleLogOut={this.handleLogOut}/>
                 )
               }}
             />
-            <Route path="/dashboard" render={() => {
+            <Route path="/dashboard/profile" 
+              render={() => {
+                return (
+                  <div>
+                    <Dashboard isLoggedIn={this.state.isLoggedIn} type={"profile"} />
+                  </div>
+                )
+            }} />
+            <Route path="/dashboard" 
+            render={() => {
               return (
                 <div>
-                  <Dashboard isLoggedIn={this.state.isLoggedIn}/>
+                  <Dashboard isLoggedIn={this.state.isLoggedIn} type={"dashboard"} />
                 </div>
               )
             }} />

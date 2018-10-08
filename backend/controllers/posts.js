@@ -13,48 +13,62 @@ router.get('/', (req, res) => {
         .then(posts => res.json(posts))
 })
 
-// app.post('/posts', function (req, res) {
-//   let newPost = req.body;
-//   db.Post.create(newPost,(err,savedPost)=>{
-//       if(err){ return res.status(400).json({err: "error has occured"})}; 
-//       res.json({data:savedPost})
-//   })
-// });
+// Create post
+router.post('/new', function (req, res) {
+  let newPost = req.body;
+  Post.create(newPost,(err,savedPost)=>{
+      if(err){ return res.status(400).json({err: "error has occured"})}; 
+      res.json({data:savedPost})
+  })
+});
+
+// Delete post
+router.delete('/:id', (req, res) => {
+  let postId = req.params.id;
+  Post.deleteOne(
+      { _id: postId },
+      (err, deletedPost) => {
+          if(err){ return res.status(400).json({err: "error has occured"})}
+          res.json({data:deletedPost});
+  });
+});
 
 // Get all posts by city id
 // /api/posts/:city => All posts by city
-// router.get("/:cityName",(req,res)=>{
-//   let cityName = req.params.cityName
-//     Post.find({})
-//         .populate("_city")
-//         .populate("_user")
-//         .exec(function(err,posts){
-//           if (err) {console.log("index error: " + err);}
-//           Post.find({"_city.cityName":cityName})
-//           .then(posts => res.json(posts))
-//   })
-// })
+router.get("/cities/:cityName",(req,res)=>{
+  Post.find()
+    .populate({
+      path: '_city'
+    }).populate({
+      path: '_user'
+    }).exec(function(err, posts) {
+    let array = []
+    posts.forEach(elem =>{
+      if (elem._city.cityName == req.params.cityName){
+        array.push(elem)
+      }
+    })
+    res.json({data:array})
+  });
+})
 
-// router.get("/:cityName",(req,res)=>{
-//   Post.find({lastname: 'Robertson'},function(err, docs) {
-
-//     // Map the docs into an array of just the _ids
-//     var ids = docs.map(function(doc) { return doc._id; });
-
-//     // Get the companies whose founders are in that set.
-//     Company.find({founder: {$in: ids}}, function(err, docs) {
-//         // docs contains your answer
-//     });
-//   });
-// })
-
-// router.post('/posts', function (req, res) {
-//   let newPost = req.body;
-//   db.Post.create(newPost,(err,savedPost)=>{
-//       if(err){ return res.status(400).json({err: "error has occured"})}; 
-//       res.json({data:savedPost})
-//   })
-// });
-
+// Get all posts by user id
+// /api/posts/users/:id => All posts by city
+router.get("/users/:id",(req,res)=>{
+  Post.find()
+    .populate({
+      path: '_city'
+    }).populate({
+      path: '_user'
+    }).exec(function(err, users) {
+    let array = []
+    users.forEach(elem =>{
+      if (elem._user._id == req.params.id){
+        array.push(elem)
+      }
+    })
+    res.json({data:array})
+  });
+})
 
 module.exports = router

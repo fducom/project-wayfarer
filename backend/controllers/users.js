@@ -2,7 +2,7 @@ const express = require('express')
 const router = express.Router()
 // JWT Token and it's m3thods
 const jwt = require('jwt-simple')
-
+const bcrypt = require('bcrypt');
 // Passport authentication methods we wrote
 const passport = require('../config/passport')
 
@@ -66,40 +66,47 @@ router.get('/:email', (req, res) => {
 // /users/signup
 router.post('/signup', (req, res) => {
   // if they gave us an email and password
-  console.log(req.body.password)
   if (req.body.email && req.body.password) {
     // creating a new user based off the req.body
-    let newUser = {
-      email: req.body.email,
-      password: req.body.password
-    }
+    bcrypt.hash(req.body.password, 10, (err, hash) => {
+      if(err){ 
+        console.log("hashing error:", err);
+        
+        res.status(200).json({error: err})
+      // we now have a successful hashed password
+      }
+      let newUser = {
+        email: req.body.email,
+        password: hash
+      }
+      // find a user based on that email
+      User.findOne({ email: req.body.email })
+        .then((user) => {
+          // if we don't hvae a user in our db
+          if (!user) {
 
-    // find a user based on that email
-    User.findOne({ email: req.body.email })
-      .then((user) => {
-        // if we don't hvae a user in our db
-        if (!user) {
-          // then we'll create a new user
-          User.create(newUser)
-            .then(user => {
-              // if we successfully created that user
-              if (user) {
-                // create a payload
-                let payload = { id: newUser.id }
-                // create a jwt token with that payload
-                let token = jwt.encode(payload, config.jwtSecret)
-                // after i've made that token, i send it back as success
-                res.json({ token })
-              // user was not successfully made  
-              } else {
-                res.sendStatus(401).json({err: 'We\'re tired. try again'})
-              }
-            })
-        // we already have a user in our db
-        } else {
-          res.status(401).json({err: 'Email already exists'})
-        }
-      })
+            // then we'll create a new user
+            User.create(newUser)
+              .then(user => {
+                // if we successfully created that user
+                if (user) {
+                  // create a payload
+                  let payload = { id: newUser.id }
+                  // create a jwt token with that payload
+                  let token = jwt.encode(payload, config.jwtSecret)
+                  // after i've made that token, i send it back as success
+                  res.json({ token })
+                // user was not successfully made  
+                } else {
+                  res.sendStatus(401).json({err: 'We\'re tired. try again'})
+                }
+              })
+          // we already have a user in our db
+          } else {
+            res.status(401).json({err: 'Email already exists'})
+          }
+        })
+    })
   } else {
     // didn't have an email and password
     res.json({err: 'Invalid username or password'})

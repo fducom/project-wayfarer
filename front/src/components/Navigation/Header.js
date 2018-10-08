@@ -14,7 +14,6 @@ class Header extends Component {
         } else {
             navOptions.push(<LoggedIn />)
         }
-
         return (
             <header>
                 <nav className="navbar navbar-expand-sm navbar-light">
