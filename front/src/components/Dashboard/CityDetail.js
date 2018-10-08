@@ -47,8 +47,8 @@ class CityDetail extends Component {
                 <button data-toggle="modal" data-target="#exampleModalCenter" onClick={this._onButtonClick}>
                     Create Post
                 </button>
-                {this.state.showComponent ? < Modal component={"Post"}/> : null}
-                <Post posts={array}/>
+                {this.state.showComponent ? < Modal component={"Post"} choice={this.props.choice}/> : null}
+                <Post posts={array} />
             </div>
         )
     }
