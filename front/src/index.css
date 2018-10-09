@@ -31,7 +31,7 @@ h2 {
 
 .dashBoard {
   display:grid;
-  grid-template-columns: 1fr 1fr 1fr;
+  grid-template-columns: 1fr 2fr ;
   /* margin:10px; */
 }
 
@@ -39,11 +39,13 @@ h2 {
   grid-column: 2/span 3;
   display:grid;
   grid-template-columns:1fr 1fr;
-  grid-template-rows:1fr 1fr 1fr;
+  grid-template-rows:1fr ;
   background-color:white;
   border-radius: 10px;
   width:100%;
   padding:50px;
+  height: 893px;
+  overflow: scroll;
 }
 
 img {

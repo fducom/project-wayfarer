@@ -18,15 +18,14 @@ class Dashboard extends Component {
     }
 
     reportMark = (choice) => {
-        this.setState({
-            choice: choice
-        })
-        axios.get('http://localhost:3001/api/posts/cities/'+this.state.choice._id)
+        axios.get('http://localhost:3001/api/posts/cities/'+choice._id)
             .then(postResponse => {
             this.setState({
                 posts: postResponse.data
             })
-            console.log(this.state.posts)
+        })
+        this.setState({
+            choice: choice
         })
     }
 
@@ -54,7 +53,7 @@ class Dashboard extends Component {
         if(this.props.type === "profile"){
             elem = <Profile />
         } else {
-            elem = <CityDetail choice={this.state.choice} posts={this.state.posts} handleInput={this.props.handleInput} posts={this.state.posts}/>
+            elem = <CityDetail choice={this.state.choice} handleInput={this.props.handleInput} posts={this.state.posts} updateShownPosts={this.updateShownPosts}/>
         }
         let element
         if(this.props.isLoggedIn){

@@ -10,39 +10,37 @@ class Profile extends Component {
         }
     }
 
-
-    handleCreate () {
-    }
-
     componentDidMount () {
         axios.defaults.headers.common['Authorization'] = 'Bearer ' + localStorage.getItem('token');
         axios.post('http://localhost:3001/users/verify',{headers: axios.defaults.headers.common['authorization']})
-        .then(response => {
-            console.log(response.data)
-            console.log("USER ID: "+response.data.id)
-            axios.get('http://localhost:3001/users/profile/'+response.data.id)
-            .then(profResponse => {
-            this.setState({
-                id: profResponse.data[0],
-                username: profResponse.data[1],
-                comments: profResponse.data[2]
+            .then(response => {
+                this.setState({
+                    id: response.data.id
+                })
+            axios.get('http://localhost:3001/users/'+response.data.id)
+                .then(username => {
+                    this.setState({
+                        username:username.data.email
+                    })
+                axios.get('http://localhost:3001/users/profile/'+response.data.id)
+                    .then(comments => {
+                        this.setState({
+                            comments: comments.data
+                        })
+                    })
+                })
             })
-            console.log(profResponse.data)
-        })
-            
-
-        })
-    }
+        }
 
     render(){
         let mappedComments = this.state.comments.map((comment, index) =>{
-        return (<div>
-            <p>Comment #{index+1}</p>
-            <h5>{comment.title}</h5>
-            <p>{comment.description}</p>
-            <p>At: {comment._city}</p>
-        </div>)
-    })
+        return (<div key={index}>
+                    <p>Comment #{index+1}</p>
+                    <h5>{comment.title}</h5>
+                    <p>{comment.description}</p>
+                    <p>{comment._city.cityName}</p>
+                </div>)
+        })
 
         return(
             <div>

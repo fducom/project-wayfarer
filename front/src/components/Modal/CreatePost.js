@@ -36,14 +36,12 @@ class CreatePost extends Component {
         })
         .then(response => {
             console.log(response)
+            this.props.updateShownPosts(this.props.posts)
         })
     }
 
     render() {
-        console.log(this.state.title)
-        console.log(this.state.description)
-        console.log(this.state.userId)
-        console.log(this.props.choice._id)
+        console.log(this.props.posts)
     return (
         <div>
             <div className="modal fade" id="exampleModalCenter" tabIndex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
@@ -66,7 +64,7 @@ class CreatePost extends Component {
                         </div>
                     </div>
                     <div className="modal-footer">
-                        <input value='Create Post' type='submit' onClick={this.handleCreate}/>
+                        <input value='Create Post' type='submit' onClick={this.handleCreate} data-dismiss="modal"/>
                     </div>
                 </div>
             </div>

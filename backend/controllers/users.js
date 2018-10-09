@@ -51,20 +51,24 @@ router.get('/', (req, res) => {
       .then(users => res.json(users))
 });
 
+router.get('/:id', (req, res) => {
+  let userId = req.params.id
+  User.findById({_id:userId})
+      .then(user => res.json(user))
+});
+
 router.get('/profile/:id', (req, res) => {
-  let returnObj = []
   let id = req.params.id
   User.findOne({ _id: id })
     .then(user =>{
       if(!user){
         res.status(500)
-      }else{
-        Post.find({_user: user.id}, (err, userPosts)=>{
-          returnObj.push(user.id)
-          returnObj.push(user.email)
-          returnObj.push(userPosts)
-          res.json(returnObj)
-        })
+      }
+      else{
+        Post.find({_user: user.id})
+          .populate("_user")
+          .populate("_city")
+          .then(posts => res.json(posts))
       }
     })
     .catch(function(err) { 

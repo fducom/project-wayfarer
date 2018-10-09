@@ -1,14 +1,13 @@
 import React, { Component } from 'react'
 import Post from './Post'
 import Modal from '../Modal/Modal'
-import axios from 'axios'
+
 
 class CityDetail extends Component {
     constructor(props) {
         super(props);
         this.state = {
             showComponent: false,
-            posts: [],
         };
         this._onButtonClick = this._onButtonClick.bind(this);
     }
@@ -23,16 +22,20 @@ class CityDetail extends Component {
         let cityName
         let country
         let imageUrl
-        if(this.props.posts && this.props.choice){
+        let button
+        if(this.props.choice){
             cityName = this.props.choice.cityName
             country = this.props.choice.country
             imageUrl = this.props.choice.imageUrl
+            button = (<button data-toggle="modal" data-target="#exampleModalCenter" onClick={this._onButtonClick} >
+                        Create Post
+                    </button>)
         } else {
             cityName = "No city selected"
             country = ""
             imageUrl = ""
+            button = null
         }
-        console.log(this.state.posts)
         return(
             <div className='city-detail'>
                 <div>
@@ -40,10 +43,8 @@ class CityDetail extends Component {
                     <p>{country}</p>
                 </div>
                 <img src={imageUrl} alt=""/>
-                <button data-toggle="modal" data-target="#exampleModalCenter" onClick={this._onButtonClick} >
-                    Create Post
-                </button>
-                {this.state.showComponent ? < Modal component={"Post"} choice={this.props.choice} handleInput={this.props.handleInput}/> : null}
+                {button}
+                {this.state.showComponent ? < Modal posts={this.props.posts} component={"Post"} choice={this.props.choice} handleInput={this.props.handleInput} updateShownPosts={this.props.updateShownPosts} /> : null}
                 <Post posts={this.props.posts} />
             </div>
         )
