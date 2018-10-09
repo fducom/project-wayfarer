@@ -9,7 +9,7 @@ class Post extends Component {
         // })
         let Posts = ""
 
-        sleep(5000).then(() => {
+ 
         console.log("POSTS:")
         console.log(this.props.posts)
             Posts = this.props.posts.map((post, index) =>{
@@ -21,11 +21,6 @@ class Post extends Component {
                 </div>
             )
         })
-        })
-
-        function sleep (time) {
-            return new Promise((resolve) => setTimeout(resolve, time));
-            }
             
         return(
             <div>

@@ -18,6 +18,25 @@ class CityDetail extends Component {
         });
     }
 
+    componentDidMount () {
+        if(this.props.choice.length !== 0){
+        axios.get('http://localhost:3001/api/posts/cities/'+this.props.choice._id)
+        .then(postResponse => {
+            console.log("POST RESPONSE:")
+            console.log(postResponse.data)
+            let array = postResponse.data
+            this.setState({
+                posts: array
+            })
+            console.log("POSTS: "+this.state.posts)
+            // console.log("State posts:"+this.state.posts)
+        })
+
+        }
+    }
+
+
+
     render(){
         let cityName
         let country
@@ -28,20 +47,6 @@ class CityDetail extends Component {
             console.log("CHOICE: "+this.props.choice)
             console.log(this.props.choice)
             console.log("id: "+this.props.choice._id)
-            if(this.props.choice.length !== 0){
-            axios.get('http://localhost:3001/api/posts/cities/'+this.props.choice._id)
-            .then(postResponse => {
-                console.log("POST RESPONSE:")
-                console.log(postResponse.data)
-                array = postResponse.data
-                console.log("array: "+array)
-                this.setState({
-                    posts: array
-                })
-                console.log("POSTS: "+this.state.posts)
-                // console.log("State posts:"+this.state.posts)
-            })
-        }
             
             cityName = this.props.choice.cityName
             country = this.props.choice.country
@@ -57,13 +62,12 @@ class CityDetail extends Component {
                     <h1>{cityName}</h1>
                     <p>{country}</p>
                 </div>
-                <Post posts={array} />
                 <img src={imageUrl} alt=""/>
                 <button data-toggle="modal" data-target="#exampleModalCenter" onClick={this._onButtonClick} >
                     Create Post
                 </button>
                 {this.state.showComponent ? < Modal component={"Post"} choice={this.props.choice} handleInput={this.props.handleInput}/> : null}
-                <Post posts={array} />
+                <Post posts={this.state.posts} />
             </div>
         )
     }
