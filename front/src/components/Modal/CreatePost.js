@@ -56,9 +56,9 @@ class CreatePost extends Component {
                         </button>
                     </div>
                     <div className="modal-body">
-                        <input type="hidden" name="_user" value={this.state.userId}/>
-                        <input type="hidden" name="_city" value={this.props.choice._id}/>
                         <div className="input-group mb-3">
+                            <input type="hidden" name="_user" value={this.state.userId}/>
+                            <input type="hidden" name="_city" value={this.props.choice._id}/>
                             <input type='text' name='title' className="form-control" placeholder="Title" aria-describedby="basic-addon2" onChange={this.handleInput}/>
                         </div>
                         <div className="input-group mb-3">
