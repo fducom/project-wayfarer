@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import Post from './Post'
 import Modal from '../Modal/Modal'
-import axios from 'axios'
+
 class CityDetail extends Component {
     constructor(props) {
         super(props);
