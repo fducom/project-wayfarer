@@ -35,23 +35,16 @@ router.delete('/:id', (req, res) => {
 
 // Get all posts by city id
 // /api/posts/:city => All posts by city
-router.get("/cities/:cityName",(req,res)=>{
-  Post.find()
-    .populate({
-      path: '_city'
-    }).populate({
-      path: '_user'
-    }).exec(function(err, posts) {
-    let array = []
-    posts.forEach(elem =>{
-      if (elem._city.cityName == req.params.cityName){
-        array.push(elem)
-      }
-    })
-    res.json({data:array})
-  });
+router.get("/cities/:cityId",(req,res)=>{
+  console.log(req.params.cityId)
+  Post.find({_city: req.params.cityId}, (err, cityPosts)=>{
+    if(err){console.log(err)}
+    else{
+      console.log("City posts: "+cityPosts)
+      res.json(cityPosts)
+    }
+  })
 })
-
 // Get all posts by user id
 // /api/posts/users/:id => All posts by city
 router.get("/users/:id",(req,res)=>{
